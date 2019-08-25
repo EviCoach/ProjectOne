@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Answer.dart';
-import 'Question.dart';
 import 'Quiz.dart';
+import 'Result.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,19 +43,16 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Quiz App',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('First App'),
-        ),
-        body: _questionIndex < _questions.length
-            ? Quiz(
-                answerQuestion: _answerQuestion,
-                questionIndex: _questionIndex,
-                questions: _questions,
-              )
-            : Center(
-                child: CircularProgressIndicator(),
-              ),
-      ),
+          appBar: AppBar(
+            title: Text('First App'),
+          ),
+          body: _questionIndex < _questions.length
+              ? Quiz(
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                )
+              : Result()),
     );
   }
 }
