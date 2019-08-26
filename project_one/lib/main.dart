@@ -12,7 +12,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
-  void _answerQuestion() {
+  var _totalScore = 0;
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       // if (_questionIndex == questions.length - 1) {
       //   _questionIndex = 0;
@@ -25,15 +27,30 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'What\s your favourite colour?',
-      'answers': ['Black', 'Red', 'Green', 'White', 'Yellow'],
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1}
+      ],
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion'],
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 5},
+        {'text': 'Elephant', 'score': 3},
+        {'text': 'Lion', 'score': 1}
+      ],
     },
     {
       'questionText': 'Who\'s your favourite instructor?',
-      'answers': ['Computer', 'Robert Greene', 'Max', 'King'],
+      'answers': [
+        {'text': 'Computer', 'score': 3},
+        {'text': 'Max', 'score': 8},
+        {'text': 'Bob Ziroll', 'score': 1},
+        {'text': 'Michael Faraday', 'score': 2},
+      ],
     },
   ];
 
@@ -52,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                   questionIndex: _questionIndex,
                   questions: _questions,
                 )
-              : Result()),
+              : Result(_totalScore)),
     );
   }
 }
